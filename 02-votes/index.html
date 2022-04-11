@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Voting Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/vue@3"></script>
+    <script type="module" src="main.js" ></script>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="#">Liste des candidats</a></li>
+            <li><a href="#">Voter</a></li>
+            <li><a href="#">Résultats</a></li>
+        </ul>
+    </nav>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="applicant in db.applicants">
+                    <td><img :src="getPhotoUrl(applicant.id)" class="photo" alt="Photo du candidat"></td>
+                    <td>{{ applicant.id }}</td>
+                    <td>{{ applicant.lastname }}</td>
+                    <td>{{ applicant.firstname }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
