@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- user-scalable=no     block le zoom -->
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3" defer></script>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body >
+
+    <nav>
+        <ul class="menu">
+            <li><a>Menu 1</a></li>
+            <li><a>Menu 2</a></li>
+            <li><a>Menu 3</a></li>
+        </ul>
+    </nav>
+
+    <div id="app">
+        <span>
+            {{ message }}
+        </span>
+        <p>
+            Vous êtes sur cette page depuis: {{ nombre }} secondes.
+        </p>
+        <p>
+            <!-- syntaxe vue = v- -->
+            <input type="text" v-model="prenom"> {{ prenom }}
+        </p>
+        <!-- syntaxe vue = v-on: (event) -->
+        <button v-on:click="reinitialiser">Click Me !</button>
+
+        <div class="films">
+            <ul>
+                <li v-for="movie in movies">{{ movie.movie_title }}</li>
+            </ul>
+            <ul>
+                <li v-for="movie in movies">{{ movie.movie_subject }}</li>
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>
