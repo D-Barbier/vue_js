@@ -43,6 +43,21 @@ const app ={
     methods:{
         reinitialiser(){
             this.nombre=0;
+        },
+
+        supprimerFilm(event){
+            let id = event.target.dataset.id;
+           
+            // let result = [];
+            // for(let movie of movies ){
+            //     if (movie.movie_id !=id){
+            //         result.push(movie);
+            //     }
+            // }
+
+            this.movies = this.movies.filter(movie => movie.movie_id != id);
+
+            console.log(event.target.dataset.id);
         }
     }//fin de methods
 

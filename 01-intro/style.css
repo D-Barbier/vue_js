@@ -45,12 +45,3 @@ nav a:hover{
 .films{
     display: flex;
 }
-
-
-
-div ul{
-    width: 25%;
-    list-style: none;
-    padding-left: 0em;
-}
-
