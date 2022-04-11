@@ -5,7 +5,8 @@ const appVote = {
 
     data() {
         return {
-           db: new Db()
+           db: new Db(),
+           activeTab : 'list' // vote // results;
         }
     },
 
@@ -18,6 +19,12 @@ const appVote = {
     methods: {
         getPhotoUrl(id){
             return './candidats/' + id + '.jpg';
+        },
+
+        chargerTab(e) {
+
+            this.activeTab=e.target.dataset.tab;
+
         }
     }
 
