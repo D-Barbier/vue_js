@@ -13,6 +13,8 @@ const app ={
         }
     },//fin de data
 
+
+    //au chargement de l'application
     //monted = fonction qui monte l'application 
      async mounted(){
         // setInterval = execute un bloc de code toute les x secondes
