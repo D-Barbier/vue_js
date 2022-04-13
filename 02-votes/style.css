@@ -42,7 +42,87 @@ nav a:hover {
     margin: 0;
 }
 
+/*rendre le conteneur responsive*/
+main{
+    width: 1200px;
+    margin: auto;
+    max-width: 100%;
+}
+
 img.photo{
     height: 64px;
+
+}
+
+/* FLEXBOX */
+.flex{
+    display: flex;
+
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    flex-flow: row wrap;
+    /* ecart entre les columns */
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: space-evenly;
     
 }
+.card{
+    background: #008c8c;
+    height: 200px;
+    width: 200px;
+    perspective: 1000px;
+}
+
+.inner{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    /* durée recommandé 0.6 */
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.front, .back{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.back{
+    transform: rotateY(180deg);
+    /* background-color: white; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img{
+    width: 100%;
+    height: 90%;
+}
+
+.card button{
+    padding: 1rem;
+    margin: 1px;
+    width: 48%;
+    border-radius: 3px;
+    border: 1px solid black;
+    background: darkgreen;
+    color: white ;
+    cursor: pointer;
+    
+}
+
+.card button:last-child{
+    background-color: darkred ;
+}
+.card:hover .inner{
+    transform: rotateY(180deg);
+}
+
+/* .card:hover .back{
+    border-radius: 50%;
+} */
