@@ -26,6 +26,7 @@
                         <th>ID</th>
                         <th>Nom</th>
                         <th>Prénom</th>
+                        <th>Vote</th>
                     </tr>
                 </thead>
 
@@ -35,6 +36,7 @@
                         <td>{{ applicant.id }}</td>
                         <td>{{ applicant.lastname }}</td>
                         <td>{{ applicant.firstname }}</td>
+                        <td>{{ applicant.votes }}</td>
                     </tr>
                     
                 </tbody>
@@ -47,11 +49,11 @@
                         <div class="front">
                             <img :src="getPhotoUrl(applicant.id)" class="photo" alt="Photo du candidat">
                         </div>
-                        <div class="back">
+                        <div class="back" :class="{ 'done': listVotes.includes(applicant.id) }">
                             <h2>{{ applicant.lastname }} {{ applicant.firstname }}</h2>
                             <div>
-                                <button v-on:click="voteYes" :data-id="applicant.id">Oui</button>
-                                <button>Non</button>
+                                <button v-on:click="vote" :data-id="applicant.id" id="yes">Oui</button>
+                                <button v-on:click="vote" :data-id="applicant.id"id="non">Non</button>
                             </div>
                             
                         </div>

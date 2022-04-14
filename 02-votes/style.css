@@ -72,6 +72,7 @@ img.photo{
     height: 200px;
     width: 200px;
     perspective: 1000px;
+    border: 1px solid blue;
 }
 
 .inner{
@@ -80,6 +81,7 @@ img.photo{
     width: 100%;
     /* durée recommandé 0.6 */
     transition: transform 1s;
+    /*  permet de mettre l'éléments ciblé dans un espace 3d */
     transform-style: preserve-3d;
 }
 
@@ -101,7 +103,7 @@ img.photo{
 
 .card img{
     width: 100%;
-    height: 90%;
+    height: 100%;
 }
 
 .card button{
@@ -126,3 +128,23 @@ img.photo{
 /* .card:hover .back{
     border-radius: 50%;
 } */
+
+
+.card button:hover {
+    background-color: black;
+    color: green;
+}
+
+.card h2{
+    margin: 0;
+    padding: .4rem;
+    background-color: black;
+    color: palevioletred;
+    border-bottom: 1px solid palevioletred;
+    text-align:center;
+}
+
+.card .done{
+    display: none;
+    
+}
