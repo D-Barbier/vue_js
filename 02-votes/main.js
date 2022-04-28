@@ -8,11 +8,13 @@ const appVote = {
            db: new Db(),
            activeTab: 'list', // vote // results;
            listVotes: [],
+           totalVotes: 0
         }
     },
 
     async mounted() {
         this.db.fetch();
+        this.totalVotes = localStorage.getItem('totalVotes')
     },
 
     computed: {
@@ -22,13 +24,18 @@ const appVote = {
 
         candidatesSorted(){
             //bonne pratique 
-            let test=this.db.applicants.sort((a,b)=> b.votes - a.votes)
-            return test
-        },  
-        total(){
-            //console.log(this.db.applicants.reduce((a,{votes})=>a+votes,0));
-            return this.db.applicants.reduce((a,{votes})=>a+votes,0);
+            return this.db.applicants.sort((a, b) => b.votes - a.votes)
         },
+
+        /*total() {
+            return this.db.applicants.reduce((a,{votes})=>a+votes,0);
+            return this.db.applicants.reduce((acc, applicant) => acc + applicant.votes, 0)
+        },*/
+
+        totalVoters() {
+            return this.totalVotes / this.db.applicants.length;
+        }
+        
     },
 
     methods: {
@@ -61,6 +68,7 @@ const appVote = {
 
             if(event.target.dataset.vote == "yes" ){
                 applicant.votes++;
+                localStorage.setItem(id, applicant.votes)
             }
 
             //console.log(applicant);
@@ -72,6 +80,10 @@ const appVote = {
             if(this.listVotes.length === this.db.applicants.length) {
                 this.activeTab = 'results';
             }
+
+            this.totalVotes++;
+
+            localStorage.setItem('totalVotes', this.totalVotes)
         }
 
        

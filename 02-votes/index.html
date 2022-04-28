@@ -85,8 +85,8 @@
         <section v-if="activeTab == 'results'">
             <h2>Merci d'avoir voté !</h2>
             <p v-for="candidate in candidatesSorted">
-                {{ candidate.lastname }} {{ (candidate.votes * 100 / total).toFixed(2) }} %
-            <progress :max="total" :value="candidate.votes"></progress>
+                {{ candidate.lastname }} {{ candidate.votes }} 
+                <progress :value="candidate.votes" :max="totalVotes"></progress>
     </main>
 </body>
 

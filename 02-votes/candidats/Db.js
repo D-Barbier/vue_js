@@ -19,7 +19,8 @@ class Db {
         // this.applicants.forEach(element => element.votes=0);
 
         for (let i = this.applicants.length - 1; i >= 0; i--) {
-            this.applicants[i].votes = this.getRandomVotes(10, 60);
+            // this.applicants[i].votes = this.getRandomVotes(10, 60);
+            this.applicants[i].votes = 0;
         }
 
        // console.log(this.applicants);
