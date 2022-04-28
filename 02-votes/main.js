@@ -6,8 +6,8 @@ const appVote = {
     data() {
         return {
            db: new Db(),
-           activeTab : 'list', // vote // results;
-            listVotes: [],
+           activeTab: 'list', // vote // results;
+           listVotes: [],
         }
     },
 
@@ -15,7 +15,21 @@ const appVote = {
         this.db.fetch();
     },
 
-    
+    computed: {
+        candidates() {
+            return this.db.applicants.sort((a, b) => 0.5 - Math.random());
+        },
+
+        candidatesSorted(){
+            //bonne pratique 
+            let test=this.db.applicants.sort((a,b)=> b.votes - a.votes)
+            return test
+        },  
+        total(){
+            //console.log(this.db.applicants.reduce((a,{votes})=>a+votes,0));
+            return this.db.applicants.reduce((a,{votes})=>a+votes,0);
+        },
+    },
 
     methods: {
         getPhotoUrl(id){
@@ -24,8 +38,7 @@ const appVote = {
 
         chargerTab(e) {
 
-            this.activeTab=e.target.dataset.tab;
-
+            this.activeTab=e.target.dataset.tab;        
         },
 
         // voteYes(e) {
@@ -41,26 +54,27 @@ const appVote = {
         //     applicant.votes--;
         //     console.log(applicant);
         // },
-        
-        vote(e){
 
-            let id = e.target.dataset.id;
+        vote(event){
+            let id = event.target.dataset.id;
             let applicant = this.db.applicants.find(item => item.id == id);
-            
-            if(e.target.id = "yes"){
 
+            if(event.target.dataset.vote == "yes" ){
                 applicant.votes++;
-               
-            }else{
-                if(applicant.votes >0){
-
-                    applicant.votes--;
-
-                }
             }
+
+            //console.log(applicant);
+
             this.listVotes.push(parseInt(id));
-            console.log(applicant);
+
+            //console.log(this.listVotes);
+
+            if(this.listVotes.length === this.db.applicants.length) {
+                this.activeTab = 'results';
+            }
         }
+
+       
     }
 
 } // fin de app
