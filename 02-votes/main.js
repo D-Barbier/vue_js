@@ -68,7 +68,16 @@ const appVote = {
 
             if(event.target.dataset.vote == "yes" ){
                 applicant.votes++;
-                localStorage.setItem(id, applicant.votes)
+                
+                let newValue
+                if(localStorage.getItem(id)){
+                    newValue = localStorage.getItem(id)
+                    newValue++
+                }else{
+                    newValue = 1
+                }
+
+                localStorage.setItem(id, newValue)
             }
 
             //console.log(applicant);
@@ -84,9 +93,14 @@ const appVote = {
             this.totalVotes++;
 
             localStorage.setItem('totalVotes', this.totalVotes)
-        }
+        },
 
-       
+        // reloadWindow() {
+        //     setTimeout(() => {
+        //         window.location.reload()
+        //     }, 5000)
+        // }
+        
     }
 
 } // fin de app

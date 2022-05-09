@@ -15,12 +15,13 @@ class Db {
         this.applicants = await response.json();
 
 
-        // ajoute un "attribut" vote dans le json 
+        // ajoute un "attribut" vote dans le json² 
         // this.applicants.forEach(element => element.votes=0);
 
         for (let i = this.applicants.length - 1; i >= 0; i--) {
             // this.applicants[i].votes = this.getRandomVotes(10, 60);
-            this.applicants[i].votes = 0;
+            let id = this.applicants[i].id
+            this.applicants[i].votes = +localStorage.getItem(id) ?? 0
         }
 
        // console.log(this.applicants);
